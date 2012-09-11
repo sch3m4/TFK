@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="imagenes">
+    <file>imagenes/remove.png</file>
+    <file>imagenes/chart.png</file>
+    <file>imagenes/log.png</file>
+    <file>imagenes/Glasses.png</file>
+    <file alias="icono">imagenes/icono.png</file>
+    <file alias="logo">imagenes/twitter.png</file>
+  </qresource>
+</RCC>
