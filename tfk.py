@@ -17,7 +17,7 @@ import pynotify
 import threading
 
 from tfkui import Ui_MainWindow,Ui_frmAbout,Ui_frmLog
-from followers import Followers, MaxRetriesReached
+from followers import Followers
 
 from PyQt4 import QtCore,QtGui,QtSql
 from matplotlib import pyplot
