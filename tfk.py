@@ -301,7 +301,6 @@ class TFK(QtGui.QMainWindow):
 	
 	
 	def addFollower(self,account,follower):
-		print "INSERT INTO %s (accountid,follower) VALUES((SELECT id FROM %s WHERE name = '%s'),'%s')" % (self.FOLLOWERS_TABLE, self.ACCOUNTS_TABLE,account,follower)
 		self.query.prepare("INSERT INTO %s (accountid,follower) VALUES((SELECT id FROM %s WHERE name = :account),:follower)" % (self.FOLLOWERS_TABLE, self.ACCOUNTS_TABLE) )
 		self.query.bindValue(":account",account)
 		self.query.bindValue(":follower",follower)
