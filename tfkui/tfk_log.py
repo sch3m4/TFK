@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'loghistory.ui'
 #
-# Created: Tue Sep 11 12:17:49 2012
+# Created: Wed Sep 12 01:09:55 2012
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -18,7 +18,7 @@ class Ui_frmLog(object):
     def setupUi(self, frmLog):
         frmLog.setObjectName(_fromUtf8("frmLog"))
         frmLog.setWindowModality(QtCore.Qt.ApplicationModal)
-        frmLog.resize(607, 369)
+        frmLog.resize(600, 369)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/imagenes/icono")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         frmLog.setWindowIcon(icon)
