@@ -1,5 +1,5 @@
 #!/bin/sh
 
-python tfk.py
+python ~/Codigos/Twitter.Followers.Keeper/tfk.py
 
 exit $?

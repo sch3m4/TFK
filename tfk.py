@@ -466,7 +466,7 @@ class TFK(QtGui.QMainWindow):
 				else:  # has followers
 
 					# get the stored followers
-					self.query.prepare("SELECT follower,stopped FROM %s JOIN %s ON %s.accountid = %s.id WHERE %s.name = :account" % (self.FOLLOWERS_TABLE, self.ACCOUNTS_TABLE, self.FOLLOWERS_TABLE, self.ACCOUNTS_TABLE, self.ACCOUNTS_TABLE ) )
+					self.query.prepare("SELECT follower,stopped FROM %s JOIN %s ON %s.accountid = %s.id WHERE %s.name = :account AND stopped IS NULL" % (self.FOLLOWERS_TABLE, self.ACCOUNTS_TABLE, self.FOLLOWERS_TABLE, self.ACCOUNTS_TABLE, self.ACCOUNTS_TABLE ) )
 					self.query.bindValue(":account",account)
 					self.query.exec_()
 				
