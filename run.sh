@@ -1,5 +1,13 @@
 #!/bin/sh
 
-python ~/Codigos/Twitter.Followers.Keeper/tfk.py
+PYBIN=`which python`
+
+if [ -z "$PYBIN" ]
+then
+  echo "[e] Python binary not found!"
+  exit -1
+fi
+
+$PYBIN ./tfk.py
 
 exit $?
