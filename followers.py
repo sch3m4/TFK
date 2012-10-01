@@ -89,7 +89,7 @@ class Followers():
 				continue
 
 			# get the cursor value to get the next 100 followers
-			more = '"has_more_items":true,"cursor":"'
+			more = '"cursor":"'
 			try:
 				cursor = body[body.index(more) + len(more):]
 			except Exception,e:

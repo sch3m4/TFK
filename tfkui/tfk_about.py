@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'about.ui'
 #
-# Created: Wed Sep 12 01:09:55 2012
+# Created: Mon Oct  1 23:08:03 2012
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -88,7 +88,7 @@ class Ui_frmAbout(object):
 
     def retranslateUi(self, frmAbout):
         frmAbout.setWindowTitle(QtGui.QApplication.translate("frmAbout", "About TFK", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("frmAbout", "Twitter Followers Keeper v1.0", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("frmAbout", "Twitter Followers Keeper v1.1", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("frmAbout", "<html><head/><body><p><a href=\"http://sch3m4.github.com/tfk\"><span style=\" text-decoration: underline; color:#0000ff;\">http://sch3m4.github.com/tfk</span></a></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("frmAbout", "Project:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("frmAbout", "Project URL:", None, QtGui.QApplication.UnicodeUTF8))

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'loghistory.ui'
 #
-# Created: Wed Sep 12 01:09:55 2012
+# Created: Mon Oct  1 23:08:03 2012
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!

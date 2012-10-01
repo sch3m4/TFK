@@ -447,6 +447,7 @@ class TFK(QtGui.QMainWindow):
 			
 			# retrieves the followers
 			followers,err = self.followers.getFollowers(account)
+			unfw = 0
 			
 			if err is not None:  # error?
 				self.addLog("Failed: %s" % err , 'dialog-warning' , todb = True)
@@ -458,7 +459,6 @@ class TFK(QtGui.QMainWindow):
 				self.query.exec_()
 				self.query.next()
 				storedfw = self.query.value(0).toInt()[0]
-				unfw = 0
 				
 				if storedfw == 0:  # has no followers stored yet
 					for fw in followers[1]:

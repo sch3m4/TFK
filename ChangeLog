@@ -1,0 +1,10 @@
+TFK (1.1)
+	* Fixed issue when getting more than 100 followers (Twitter changed the response format)
+	
+	-- Chema Garcia <chema@safetybits.net> (01/10/2012)
+
+TFK (1.0)
+
+	* First release
+	
+	-- Chema Garcia <chema@safetybits.net> (11/09/2012)
