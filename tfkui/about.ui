@@ -30,7 +30,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Twitter Followers Keeper v1.1</string>
+    <string>Twitter Followers Keeper v1.2</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">

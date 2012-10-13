@@ -70,7 +70,6 @@ class TFK(QtGui.QMainWindow):
 					self.parent.show()
 					self.hidden = False
 
-
 		def create(self):
 			self.sysTray = QtGui.QSystemTrayIcon(self)
 			trayicon = QtGui.QIcon()
@@ -78,7 +77,6 @@ class TFK(QtGui.QMainWindow):
 			self.sysTray.setIcon(trayicon)
 			self.connect(self.sysTray, QtCore.SIGNAL("activated(QSystemTrayIcon::ActivationReason)"), self.activated)
 			self.sysTray.setVisible(True)
-			
 			
 		def showMessage(self,title="[ TFKeeper ]",message=None,icon="dialog-information",urgency=pynotify.URGENCY_NORMAL,timeout=2000):
 			n = pynotify.Notification(title,message,icon)
@@ -248,14 +246,14 @@ class TFK(QtGui.QMainWindow):
 
 		# set the tray icon
 		self.systray.create()
-		
+
 
 	def displayStoredFollowers(self,account=None):
-		
+
 		# set the followers of the current account
 		if account is None or type(account) == int:
 			account = self.ui.cboAccount.currentText()
-		
+
 		if len(account) > 0:
 			self.query.prepare("SELECT COUNT(follower) FROM %s WHERE accountid = (SELECT id FROM %s WHERE name = :account) AND stopped IS NULL" % (self.FOLLOWERS_TABLE, self.ACCOUNTS_TABLE) )
 			self.query.bindValue(':account', account)
@@ -263,8 +261,8 @@ class TFK(QtGui.QMainWindow):
 			self.query.next()
 			val = str(self.query.value(0).toPyObject())
 			self.ui.lcdFollowers.display(val)
-			
-	
+
+
 	def displayStoredAccounts(self):
 		# retrieves the stored accounts
 		self.query.exec_("SELECT name FROM %s" % self.ACCOUNTS_TABLE)
@@ -272,8 +270,8 @@ class TFK(QtGui.QMainWindow):
 			item = self.query.value(0).toString()
 			if self.ui.cboAccount.findText(item) < 0:
 				self.ui.cboAccount.addItem(item)
-			
-			
+
+
 	def addLog(self,message,icon='dialog-information',timeout=2000,todb = False):
 		"""
 		Function to add an entry to Log table
@@ -282,9 +280,9 @@ class TFK(QtGui.QMainWindow):
 			self.query.prepare("INSERT INTO %s (message) VALUES (:message)" % self.LOG_TABLE)
 			self.query.bindValue(":message", message )
 			self.query.exec_()
-			
+
 		self.systray.showMessage(message=message,icon=icon,timeout=timeout)
-	
+
 	def addAccount(self,account):
 		"""
 		Function to add an account to the database
@@ -319,16 +317,22 @@ class TFK(QtGui.QMainWindow):
 		We're about to finish
 		"""
 		
-		if self.threadfinish is not None:  # there is a thread running
-			self.threadfinish.set()
-			self.threadck.join(0)
-
-		# close the database
-		self.db.close()
-		# remove systray
-		self.systray.destroy()
-		# accept the event (close the application)		
-		event.accept()
+		answer = QtGui.QMessageBox.question(self, "Are you sure you want to exit?", "If you click \"No\" the application will be minimized to the systray. Otherwise the application will exit now.", QtGui.QMessageBox.Yes,QtGui.QMessageBox.No)
+		if answer == QtGui.QMessageBox.No:
+			event.ignore()
+			self.systray.activated(QtGui.QSystemTrayIcon.DoubleClick)
+			#self.setWindowState(QtCore.Qt.WindowMinimized)
+		else:
+			if self.threadfinish is not None:  # there is a thread running
+				self.threadfinish.set()
+				self.threadck.join(0)
+	
+			# close the database
+			self.db.close()
+			# remove systray
+			self.systray.destroy()
+			# accept the event (close the application)		
+			event.accept()
 	
 	
 	def removeLogs(self):
@@ -489,12 +493,12 @@ class TFK(QtGui.QMainWindow):
 						if not fw in fwlist[0] or len(fwlist[1][fwlist[0].index(fw)]) > 0:
 							self.addFollower(account, fw)
 							self.addLog("%s has started following %s" % (fw,account)  , timeout=pynotify.EXPIRES_NEVER , todb = True)
-							
-			# updates the 'lastchecked' date
-			self.updateAccountChecked(account)
-			self.displayStoredFollowers(account)
-			
-			self.addLog("%s has %d follower(s) and %d unfollower(s)" % (account, followers[0], unfw))
+								
+				# updates the 'lastchecked' date
+				self.updateAccountChecked(account)
+				self.displayStoredFollowers(account)
+				
+				self.addLog("%s has %d follower(s) and %d unfollower(s)" % (account, followers[0], unfw))
 			
 			# wait for the check interval to finish (fix it, it is VERY DIRTY....)
 			for i in range(0, self.timevals.getInterval()):
