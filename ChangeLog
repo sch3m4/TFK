@@ -1,3 +1,9 @@
+TFK (1.2)
+	* Now the application asks you to exit or minimize to tray when you close the main window
+	* When an error occurs it displays the message but the notification about followers/unfollowers is not shown
+	
+	-- Chema Garcia <chema@safetybits.net> (14/09/2012)
+
 TFK (1.1)
 	* Fixed issue when getting more than 100 followers (Twitter changed the response format)
 	
